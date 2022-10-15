@@ -23,7 +23,7 @@ abstract class SleepDatabase : RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                SleepDatabase::class.java, "Sleep-db"
+                SleepDatabase::class.java, "Sleep2-db"
             ).build()
 
     }
