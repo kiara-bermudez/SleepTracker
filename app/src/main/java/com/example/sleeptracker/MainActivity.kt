@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sleeptracker.databinding.ActivityMainBinding
 import kotlinx.coroutines.launch
 
+// Part 2
 class MainActivity : AppCompatActivity() {
 
     private val sleepEntries = mutableListOf<SleepEntity2>()
