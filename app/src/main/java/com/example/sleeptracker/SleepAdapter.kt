@@ -31,7 +31,7 @@ class SleepAdapter (private val context: Context, private val mEntries: List<Sle
         val context = parent.context
         val inflater = LayoutInflater.from(context)
         // Inflate the custom layout
-        val contactView = inflater.inflate(R.layout.sleep_item, parent, false)
+        val contactView = inflater.inflate(R.layout.fragment_sleep_item, parent, false)
         // Return a new holder instance
         return ViewHolder(contactView)
     }
