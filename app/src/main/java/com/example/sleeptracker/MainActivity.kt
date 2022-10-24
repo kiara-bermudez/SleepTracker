@@ -4,18 +4,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sleeptracker.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
 // Part 2
 class MainActivity : AppCompatActivity() {
 
     private val sleepEntries = mutableListOf<SleepEntity2>()
-    private lateinit var recyclerView: RecyclerView
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        recyclerView = findViewById(R.id.recyclerView)
-
         val addButton = findViewById<Button>(R.id.addButton)
         addButton.setOnClickListener {
 
@@ -34,20 +34,27 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val sleepAdapter = SleepAdapter(this, sleepEntries)
-        recyclerView.adapter = sleepAdapter
+        val fragmentManager: FragmentManager = supportFragmentManager
 
-        lifecycleScope.launch {
-            (application as SleepApplication).db.sleepDao().getAll().collect{ databaseList ->
-                sleepEntries.clear()
-                sleepEntries.addAll(databaseList)
-                sleepAdapter.notifyDataSetChanged()
+        // define your fragments here
+        val sleepLogFragment: Fragment = SleepLogFragment()
+        val sleepStatsFragment: Fragment = SleepStatsFragment()
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        // handle navigation selection
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            lateinit var fragment: Fragment
+            when (item.itemId) {
+                R.id.nav_log -> fragment = sleepLogFragment
+                R.id.nav_stats -> fragment = sleepStatsFragment
             }
+            fragmentManager.beginTransaction().replace(R.id.mainContainer, fragment).commit()
+            true
         }
 
-        recyclerView.layoutManager = LinearLayoutManager(this).also {
-            val dividerItemDecoration = DividerItemDecoration(this, it.orientation)
-            recyclerView.addItemDecoration(dividerItemDecoration)
-        }
+        // Set default selection
+        bottomNavigationView.selectedItemId = R.id.nav_log
+
     }
 }

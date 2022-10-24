@@ -5,7 +5,11 @@
       <map>
         <entry key="..\:/Users/kiara/OneDrive/Documents/Codepath-Android-Course/Week2/SleepTracker/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/kiara/OneDrive/Documents/Codepath-Android-Course/Week2/SleepTracker/app/src/main/res/layout/add_sleep_item.xml" value="0.36" />
+        <entry key="..\:/Users/kiara/OneDrive/Documents/Codepath-Android-Course/Week2/SleepTracker/app/src/main/res/layout/fragment_sleep_item.xml" value="0.1" />
+        <entry key="..\:/Users/kiara/OneDrive/Documents/Codepath-Android-Course/Week2/SleepTracker/app/src/main/res/layout/fragment_sleep_log.xml" value="0.2546875" />
+        <entry key="..\:/Users/kiara/OneDrive/Documents/Codepath-Android-Course/Week2/SleepTracker/app/src/main/res/layout/fragment_sleep_stats.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/kiara/OneDrive/Documents/Codepath-Android-Course/Week2/SleepTracker/app/src/main/res/layout/sleep_item.xml" value="0.2" />
+        <entry key="..\:/Users/kiara/OneDrive/Documents/Codepath-Android-Course/Week2/SleepTracker/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25364583333333335" />
       </map>
     </option>
   </component>
